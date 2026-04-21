@@ -1,0 +1,17 @@
+target	accession	evalue	score	bias	domains	best_domain_evalue	best_domain_score
+YCChr2b_017450.1|gene=YCChr2b_017450|chrom=Chr2b|start=178434683|end=178439930|strand=+		1.61e-25	92.19	0.07	1	2.52e-25	91.56
+YCChr3c_023520.1|gene=YCChr3c_023520|chrom=Chr3c|start=179008981|end=179023297|strand=+		1.76e-25	92.07	0.06	1	2.76e-25	91.44
+YCChr2c_024160.1|gene=YCChr2c_024160|chrom=Chr2c|start=185115429|end=185126299|strand=-		3.61e-25	91.06	0.07	1	5.86e-25	90.38
+YCChr8c_007180.1|gene=YCChr8c_007180|chrom=Chr8c|start=38870766|end=38883317|strand=+		8.08e-18	67.28	0.01	1	5.44e-17	64.60
+YCChr2b_009410.1|gene=YCChr2b_009410|chrom=Chr2b|start=109930891|end=109938175|strand=+		2.18e-17	65.88	0.00	1	3.98e-17	65.04
+YCChr8b_010320.1|gene=YCChr8b_010320|chrom=Chr8b|start=43393027|end=43405805|strand=-		2.83e-17	65.52	0.01	1	5.38e-17	64.61
+YCChr2c_016400.1|gene=YCChr2c_016400|chrom=Chr2c|start=124762106|end=124776782|strand=+		4.63e-17	64.82	0.00	1	8.26e-17	64.01
+YCChr5c_028250.1|gene=YCChr5c_028250|chrom=Chr5c|start=194729473|end=194740057|strand=+		3.67e-16	61.92	0.01	1	8.95e-16	60.66
+YCChr2a_009220.1|gene=YCChr2a_009220|chrom=Chr2a|start=85987613|end=85998883|strand=+		3.63e-15	58.69	0.00	1	1.49e-14	56.71
+YCChr10b_001000.1|gene=YCChr10b_001000|chrom=Chr10b|start=3582295|end=3624271|strand=+		9.54e-14	54.10	0.00	1	1.98e-13	53.08
+YCChr12c_007750.1|gene=YCChr12c_007750|chrom=Chr12c|start=63595987|end=63606306|strand=+		1.33e-13	53.64	0.01	1	2.5e-13	52.75
+YCChr10c_012050.1|gene=YCChr10c_012050|chrom=Chr10c|start=13826013|end=13832379|strand=-		1.75e-13	53.25	0.01	1	4e-13	52.09
+YCChr12b_009800.1|gene=YCChr12b_009800|chrom=Chr12b|start=39306545|end=39319639|strand=+		1.28e-12	50.46	0.01	1	2.09e-12	49.76
+YCChr3b_012540.1|gene=YCChr3b_012540|chrom=Chr3b|start=114328011|end=114336385|strand=+		6.31e-08	35.27	0.00	1	1.24e-07	34.32
+YCChr3c_010180.1|gene=YCChr3c_010180|chrom=Chr3c|start=101166996|end=101184736|strand=-		6.47e-08	35.23	0.00	1	1.45e-07	34.10
+YCChr3c_010310.1|gene=YCChr3c_010310|chrom=Chr3c|start=103343193|end=103362036|strand=+		6.83e-08	35.16	0.00	1	1.54e-07	34.01

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oil Tea CoLPAT Thesis"
+  short_description: "Reproduce and polish the oil tea CoLPAT thesis workflow."
+  default_prompt: "Use this skill to continue the Camellia oleifera CoLPAT thesis analysis, figures, and document polishing workflow."
