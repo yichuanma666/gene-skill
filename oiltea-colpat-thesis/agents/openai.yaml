@@ -1,4 +1,4 @@
 interface:
-  display_name: "Oil Tea CoLPAT Thesis"
-  short_description: "Reproduce and polish the oil tea CoLPAT thesis workflow."
-  default_prompt: "Use this skill to continue the Camellia oleifera CoLPAT thesis analysis, figures, and document polishing workflow."
+  display_name: "Gene Family Analysis"
+  short_description: "Generic gene family workflow for any species."
+  default_prompt: "Use $gene-family-analysis to plan, verify, or package a gene family analysis workflow for my species and target family."

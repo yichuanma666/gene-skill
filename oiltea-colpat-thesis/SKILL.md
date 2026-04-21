@@ -1,101 +1,103 @@
 ---
-name: oiltea-colpat-thesis
-description: Oil tea Camellia oleifera CoLPAT/LPAT thesis workflow for reproducing the existing gene-family analysis, validating PF01553/CDD/SMART domain evidence, regenerating figures without in-figure titles, and polishing the thesis DOCX to the reference-paper structure. Use when working on this specific oil tea CoLPAT thesis project, its final figures/tables, or follow-up edits to the 13k-word no-figure-title manuscript.
+name: gene-family-analysis
+description: Generic gene family analysis workflow for any species. Use when planning, reproducing, or writing a gene family study across plants, animals, fungi, or algae, including member identification, HMM/domain validation, phylogenetic analysis, motif/domain architecture, gene structure, chromosome location, collinearity, expression analysis, and manuscript-ready figures/tables.
 ---
 
-# Oil Tea CoLPAT Thesis
+# Generic Gene Family Analysis
 
 ## Scope
 
-Use this skill only for the oil tea (`Camellia oleifera`, Changlin40) CoLPAT/LPAT thesis project. Do not mix in the Pleurotus/fungal laccase project, the Pinellia SWEET template paper, raw genome downloads, DIAMOND temporary files, or unrelated WeChat attachments.
+Use this skill for species-agnostic gene family analysis projects.
 
-The packaged final manuscript is:
+Supported project types:
 
-`assets/final_outputs/final_thesis_13000_no_fig_titles.docx`
+- plants
+- animals
+- fungi
+- algae and other eukaryotes
 
-It has approximately 13,250 non-space characters, 8 embedded images, clean Word captions in the main text, and no in-figure titles for the regenerated project figures.
+Do not assume every module applies to every species or dataset. Choose only the modules that are supported by the available inputs.
 
-## Project Facts
+Start by reading:
 
-Read `references/project-facts.md` before changing scientific wording. Key points:
+- `references/required-inputs.md`
+- `references/workflow.md`
+- `references/writing-guardrails.md`
 
-- Final CoLPAT members: 16.
-- Domain model: Pfam `PF01553` (`Acyltransferase`) HMM, with CDD/SMART复核 wording in the thesis.
-- PF01553 HMM E-value range in final members: `1.61e-25` to `6.83e-08`.
-- Arabidopsis best-homolog groups: 9 AtLPAT1-like, 4 AtLPAT2-like, 3 AtLPAT4-like.
-- Public expression data: GSE190644 only; 16 members mapped to LPAT-homologous transcripts, 13 high-confidence and 3 low-confidence mappings.
-- WGDI: 1370 Co-At genome-wide collinearity blocks; 5 blocks involve CoLPAT/AtLPAT loci; CoLPAT16 and AtLPAT3 are in the same strict collinearity block.
-- Do not claim real tissue/stage TPM/FPKM, qRT-PCR validation, or seed 120-150 d high expression unless new data are provided.
+Read `references/output-spec.md` when preparing final figures, tables, or thesis text.
 
-## Common Workflows
+## Operating Rules
 
-### Continue Thesis Edits
+1. Inventory the user's real inputs before promising outputs.
+2. Keep three counts separate whenever possible:
+   - homology-search candidates
+   - HMM/domain-search candidates
+   - final validated family members
+3. Do not fabricate expression, collinearity, qRT-PCR, localization, or subcellular results.
+4. If the project only has best-homolog links, do not call them synteny.
+5. If the expression matrix is public population/accession data, do not describe it as tissue or developmental-stage expression.
+6. Preserve the distinction between:
+   - domain screening model
+   - external domain review source such as SMART/CDD/InterPro
+   - final biological interpretation
 
-1. Start from `assets/final_outputs/final_thesis_13000_no_fig_titles.docx`.
-2. Preserve the reference-paper structure:
-   `1 引言 -> 2 材料与方法 -> 3 结果与分析 -> 4 讨论与结论`.
-3. Keep result order:
-   family identification, phylogenetic tree, conserved motifs/domains, gene structure, WGDI collinearity, secondary-structure table, public expression median-FPKM statistic.
-4. Keep figure names in Word captions only; do not add titles inside images.
-5. If adding claims, verify against packaged tables in `assets/tables`, `assets/expression`, and `assets/collinearity`.
+## Minimal Workflow
 
-### Regenerate Figures
+1. Check which inputs exist:
+   genome, annotation, proteins/CDS, reference family sequences, HMM/domain IDs, expression matrix, collinearity results.
+2. Choose the identification route:
+   - homology search from trusted reference family proteins
+   - HMM search from family-domain models
+   - best practice: combine both and validate the final set
+3. Build the final member table.
+4. Run only the supported downstream modules:
+   - phylogeny
+   - motifs/domains
+   - gene structure
+   - chromosome/scaffold location
+   - collinearity
+   - expression
+   - secondary or tertiary structure
+5. Write the results with explicit evidence boundaries.
 
-Use `scripts/make_colpat_ref_style_figures.py` for chromosome location, phylogenetic tree, motifs, domains, gene structure, secondary-structure plot, and homolog-link figure.
+## Core Modules
 
-Notes:
+### Always preferred when inputs allow
 
-- The packaged script reflects the final no-title convention: avoid `ax.set_title(...)`.
-- It was written for the original workspace and may contain `ROOT = F:\jyfx`; adjust `ROOT` if running elsewhere.
-- Use figures from `assets/figures` when only document editing is needed.
+- family-member identification
+- domain validation
+- phylogenetic analysis
+- conserved motif or domain architecture
+- gene structure analysis
+- family-member information table
 
-### Rebuild Public Expression Evidence
+### Optional modules
 
-Use `scripts/analyze_gse190644_expression.py` only if the original public GSE190644 files are available. The skill package intentionally excludes large raw expression files and translated protein databases.
+- chromosome or scaffold localization
+- interspecies or intraspecies collinearity
+- expression heatmap or expression statistic
+- cis-element analysis
+- subcellular localization
+- secondary structure, transmembrane helices, signal peptides, 3D modeling
 
-Packaged final expression outputs:
+## Expression and Collinearity Rules
 
-- `assets/expression/CoLPAT_GSE190644_expression_mapping.tsv`
-- `assets/expression/CoLPAT_GSE190644_FPKM_summary.tsv`
-- `assets/expression/CoLPAT_GSE190644_expression_results.xlsx`
+- Use a heatmap only when columns are real biological samples or treatments that support that interpretation.
+- If only accession-level or population-level expression exists, a summary bar plot or box plot is often safer than a tissue-expression heatmap.
+- Use "collinearity" or "synteny" only when the project has real MCScanX/WGDI or equivalent block results.
+- If only BLAST best hits exist, describe them as homolog relationships, not collinearity.
 
-When writing the thesis, describe these as public population-expression evidence, not as the user's own tissue RNA-seq, tissue/stage heatmap, or qRT-PCR results.
+## Deliverables
 
-### Rebuild WGDI Collinearity
+When asked for a final package, aim to provide:
 
-Use `scripts/run_colpat_wgdi_collinearity.py` only when full oil tea/Arabidopsis genome inputs and DIAMOND/WGDI are available. The skill package intentionally excludes large GFF/protein databases and DIAMOND temporary files.
+- a member-information table
+- a domain-validation table
+- figure-ready outputs without in-figure titles unless requested
+- a short methods summary
+- a short results summary with exact counts
+- a clearly labeled optional-data section for expression/collinearity
 
-Use `assets/collinearity/CoLPAT_AtLPAT_WGDI_collinearity_blocks.tsv` for final manuscript wording when not rerunning WGDI.
+## Bundled Helper
 
-### Reapply Final DOCX Polishing
-
-The polishing scripts are included under `scripts/`:
-
-- `update_thesis_doc.py`: integrates public expression and WGDI results into the earlier thesis.
-- `cover_with_template_structure.py`: rearranges the thesis to match the Pinellia SWEET reference structure.
-- `expand_thesis_text.py`: expands the manuscript to about 13k non-space characters.
-- `fix_final_discussion_paragraph.py`: fixes the final UTF-8 discussion paragraph if PowerShell encoding corrupts it.
-
-These scripts are project-specific and may contain absolute paths from `F:\jyfx`; adjust paths before reuse in another workspace.
-
-## Packaged Resources
-
-- `assets/final_outputs`: final DOCX.
-- `assets/figures`: project figures, including no-title regenerated PNGs.
-- `assets/tables`: CoLPAT member, domain, motif, secondary-structure, HMM, and AtLPAT homology result tables.
-- `assets/sequences`: CoLPAT candidate CDS/protein FASTA and Arabidopsis LPAT FASTA.
-- `assets/hmm`: PF01553 HMM used for domain screening.
-- `assets/expression`: public-expression mapping and summary outputs.
-- `assets/collinearity`: small WGDI block summary/config files.
-- `scripts`: reproducible project scripts only.
-
-## Exclusions
-
-The package deliberately excludes:
-
-- `fungi_pleurotus/` and fungal zip files.
-- `template/` and the Pinellia SWEET reference DOCX.
-- Raw Changlin40 genome FASTA/GFF files and compressed genome downloads.
-- Raw GSE190644 archives, translated protein databases, and large expression source matrices.
-- DIAMOND executables, `.dmnd` databases, and temporary files.
-- Word lock files such as `~$*.docx`.
+Use `scripts/init_gene_family_project.py` to scaffold a new project workspace with standard folders and starter metadata.
